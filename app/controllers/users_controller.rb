@@ -44,8 +44,12 @@ class UsersController < ApplicationController
     end
 
     get '/users/:id' do
-        "erb :/users/show, user # #{params[:id]}"
-        # include greeting if displaying current user
+        if logged_in?
+            @user = User.find_by_id(params[:id])
+            erb :'/users/show'
+        else
+            redirect '/login'
+        end
     end
 
     get '/users/:id/edit' do
