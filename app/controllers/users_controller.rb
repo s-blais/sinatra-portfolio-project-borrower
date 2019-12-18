@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
     get '/users/:id' do
         "erb :/users/show, user # #{params[:id]}"
-        # include welcome message if displaying current user
+        # include greeting if displaying current user
     end
 
     get '/users/:id/edit' do
