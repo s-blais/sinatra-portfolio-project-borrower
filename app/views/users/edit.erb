@@ -1,0 +1,9 @@
+<h1>Edit user information<h1>
+<form action="/users/<%= @user.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="username" id="username" value="<%= @user.username %>">
+  <input type="text" name="email" id="email" value="<%= @user.email %>">
+  <input type="text" name="phone" id="phone" value="<%= @user.phone %>">
+  <input type="text" name="location" id="location" value="<%= @user.location %>">
+  <input type="submit" value="Edit User">
+</form>

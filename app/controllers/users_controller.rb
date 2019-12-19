@@ -53,11 +53,33 @@ class UsersController < ApplicationController
     end
 
     get '/users/:id/edit' do
-        "erb :/users/edit, user # #{params[:id]}"
+        if logged_in?
+            @user = User.find_by_id(params[:id])
+            if @user.id == current_user.id
+                erb :'/users/edit'
+            else
+                redirect "/users/#{params[:id]}"
+            end
+        else
+            redirect '/login'
+        end
     end
 
     patch '/users/:id' do
-        "processes update to user # #{params[:id]}"
+        if logged_in?
+            @user = User.find_by_id(params[:id])
+            if @user.id == current_user.id
+                if @user.update(params.except(:_method))
+                    redirect "/users/#{params[:id]}" #displays successful update(s) on show page
+                else
+                    redirect "/users/#{params[:id]}/edit" #reloads edit if unable to update
+                end
+            else
+                redirect "/users/#{params[:id]}"
+            end
+        else
+            redirect "/login"
+        end
     end
 
 
