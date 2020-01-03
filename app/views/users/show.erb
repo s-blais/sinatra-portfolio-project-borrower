@@ -2,3 +2,7 @@
 <p>Email: <%= @user.email %></p>
 <p>Phone: <%= @user.phone %></p>
 <p>Location: <%= @user.location %></p>
+
+<% if @user.id == current_user.id %>
+  <a class = "button" href="/users/<%= @user.id %>/edit">edit <%= @user.username %></a><br>
+<% end %>
