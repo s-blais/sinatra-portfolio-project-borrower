@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     post '/users' do
         # add username uniqueness test
-        # add password presence test since requiring it in user.rb prevents any updates
+        # add password != "" test since requiring it in user.rb prevents any updates
         user = User.new(params)
         if user.save
             session[:user_id] = user.id
