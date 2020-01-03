@@ -14,10 +14,10 @@
 
 <% if @item.user_id != current_user.id && @item.user_id == @item.borrower_id %>
   <p><%= @item.title %> is currently available for borrowing.<br>
-  Please contact Borrower member <%= @item.user.username %></p>
+  Please contact Borrower member <a href="/users/<%= @item.user.id %>"><%= @item.user.username %></a></p>
 <% end %>
 
 <% if @item.user_id != current_user.id && @item.user_id != @item.borrower_id %>
   <p><%= @item.title %> is currently borrowed.<br>
-  Please contact Borrower member <%= @item.user.username %> to inquire about future availability.</p>
+  Please contact Borrower member <a href="/users/<%= @item.user.id %>"><%= @item.user.username %></a> to inquire about future availability.</p>
 <% end %>
