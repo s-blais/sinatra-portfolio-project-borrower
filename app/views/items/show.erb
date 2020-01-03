@@ -21,3 +21,7 @@
   <p><%= @item.title %> is currently borrowed.<br>
   Please contact Borrower member <a href="/users/<%= @item.user.id %>"><%= @item.user.username %></a> to inquire about future availability.</p>
 <% end %>
+
+<% if @item.user_id != current_user.id %>
+  <a class = "button" href="/items/<%= @item.id %>/edit">edit <%= @item.title %></a><br>
+<% end %>
