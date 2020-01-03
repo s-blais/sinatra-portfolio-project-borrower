@@ -3,29 +3,32 @@ body {
     color: #484848;
     line-height: 1.3em;
   }
-  .button {
+.button {
     border: 1px solid;
     border-radius: 5px;
     padding: 5px;
-    margin: 5px;
+    margin: 5px 5px 5px 0;
   }
-  a:link {
+a:link {
     color: #484848;
     text-decoration: none;
   }
-  a:visited {
+a:visited {
     color: #484848;
     text-decoration: none;
   }
-  a:hover {
+a:hover {
     color: #484848;
     text-decoration: underline;
   }
-  a:active {
+a:active {
     color: #484848;
     text-decoration: underline;
   }
-  h4 {
+h1 {
+    color: #ff6600;
+  }
+h4 {
     margin-bottom: 0;
   }
-  hr {padding: 5px, 0, 5px, 0;}
+hr {padding: 5px, 0, 5px, 0;}

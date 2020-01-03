@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="<%= url("/stylesheets/main.css") %>">
   </head>
   <body>
+    <h1>Borrower</h1>
     <%= yield %>
+    <% if logged_in? %>
+      <br>
+      <a class="button" href="/logout">Log Out</a>
+    <% end %>
   </body>
 </html>
