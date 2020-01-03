@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
 
     get '/users/new' do
-        erb :"/users/new"
+        if logged_in?
+            # "you must be logged out to create a new user etc" message might be good here
+            redirect "/users/#{current_user.id}"
+        else
+            erb :"/users/new"
+        end
     end
 
     post '/users' do
+        # add username uniqueness test
+        # add password presence test since requiring it in user.rb prevents any updates
         user = User.new(params)
         if user.save
             session[:user_id] = user.id
@@ -16,6 +23,7 @@ class UsersController < ApplicationController
 
     get '/login' do
         if logged_in?
+            # "you are already logged in as... to login as different..." might be good here
             redirect "/users/#{current_user.id}"
         else
             erb :"/users/login"
@@ -40,7 +48,11 @@ class UsersController < ApplicationController
     end
 
     get '/users' do
-        erb :"/users/index"
+        if logged_in?
+            erb :"/users/index"
+        else
+            redirect '/login'
+        end
     end
 
     get '/users/:id' do
@@ -66,7 +78,7 @@ class UsersController < ApplicationController
     end
 
     patch '/users/:id' do
-        if logged_in?
+        if logged_in? #is this even necessary? Is this test needed for anything post or patch? The subsequent "if" statement seems like it would bounce a non-logged-in patch attempt to the login page, because the else/redirect would fail that path's logged_in test, right?
             @user = User.find_by_id(params[:id])
             if @user.id == current_user.id
                 if @user.update(params.except(:_method))
@@ -81,6 +93,5 @@ class UsersController < ApplicationController
             redirect "/login"
         end
     end
-
 
 end
