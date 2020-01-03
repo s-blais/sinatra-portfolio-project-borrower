@@ -1,0 +1,10 @@
+<h1><%= current_user.username %>, add an item to your borrowables:</h1>
+
+<form action="/items" method="post">
+  <input type="text" name="title" id="title" placeholder="Item Title">
+  <input type="text" name="description" id="description" placeholder="Description">
+  <input type="text" name="max_borrow_days" id="max_borrow_days" placeholder="Maximum Borrowable Days">
+  <input type="hidden" id="hidden" name="user_id" value="<%= current_user.id %>">
+  <input type="hidden" id="hidden" name="borrower_id" value="<%= current_user.id %>">
+  <input type="submit" value="Create Item">
+</form>

@@ -18,7 +18,9 @@ class ItemsController < ApplicationController
     end
 
     get '/items/:id' do
-        "erb :/items/show, item # #{params[:id]}"
+        @item = Item.find_by_id(params[:id])
+        @borrower = User.find_by_id(@item.borrower_id)
+        erb :"/items/show"
     end
 
     get '/items/:id/edit' do

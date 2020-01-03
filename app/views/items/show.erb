@@ -1,0 +1,23 @@
+<h1>Item: <%= @item.title %></h1>
+
+<p>Title: <%= @item.title %></p>
+<p>Description: <%= @item.description %></p>
+<p>Maximum Borrowable Days: <%= @item.max_borrow_days %></p>
+
+<% if @item.user_id == current_user.id && @item.user_id == @item.borrower_id %>
+  <p>Your <%= @item.title %> is currently not borrowed by anyone.</p>
+<% end %>
+
+<% if @item.user_id == current_user.id && @item.user_id != @item.borrower_id %>
+  <p>Your <%= @item.title %> is currently borrowed by <%= @borrower.username %>.</p>
+<% end %>
+
+<% if @item.user_id != current_user.id && @item.user_id == @item.borrower_id %>
+  <p><%= @item.title %> is currently available for borrowing.<br>
+  Please contact Borrower member <%= @item.user.username %></p>
+<% end %>
+
+<% if @item.user_id != current_user.id && @item.user_id != @item.borrower_id %>
+  <p><%= @item.title %> is currently borrowed.<br>
+  Please contact Borrower member <%= @item.user.username %> to inquire about future availability.</p>
+<% end %>
