@@ -2,9 +2,18 @@
 
 <form action="/items/<%= @item.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label for="title">item title</label><br>
   <input type="text" name="title" id="title" value="<%= @item.title %>">
+  <br>
+  <label for="description">item description</label><br>
   <input type="text" name="description" id="description" value="<%= @item.description %>">
+  <br>
+  <label for="max_borrow_days">maximum borrowable days</label><br>
   <input type="text" name="max_borrow_days" id="max_borrow_days" value="<%= @item.max_borrow_days %>">
+  <br>
+  <label for="borrower_id">current borrower id (self if not borrowed)</label><br>
   <input type="text" id="borrower_id" name="borrower_id" placeholder="1">
+  <br>
   <input type="submit" value="update item">
 </form>

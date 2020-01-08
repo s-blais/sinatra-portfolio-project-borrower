@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
     patch '/items/:id' do
         if logged_in? # see users patch path for comment
             @item = Item.find_by_id(params[:id])
-            if @user.id == current_user.id
+            if @item.user_id == current_user.id
                 if @item.update(params.except(:_method))
                     redirect "/items/#{params[:id]}" #displays successful update(s) on show page
                 else
