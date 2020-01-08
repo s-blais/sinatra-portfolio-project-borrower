@@ -1,9 +1,20 @@
 <h2>Edit user information</h2>
 <form action="/users/<%= @user.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label for="username">username</label><br>
   <input type="text" name="username" id="username" value="<%= @user.username %>">
+  <br><br>
+  <label for="email">email</label><br>
   <input type="text" name="email" id="email" value="<%= @user.email %>">
+  <br><br>
+  <label for="phone">phone</label><br>
   <input type="text" name="phone" id="phone" value="<%= @user.phone %>">
+  <br><br>
+  <label for="location">location</label><br>
   <input type="text" name="location" id="location" value="<%= @user.location %>">
-  <input type="submit" value="edit user">
+  <br><br>
+  <input type="submit" class="button" value="edit user">
+  <br><br>
+  <a class="button" href="/users/<%= @user.id %>">eh, never mind</a> (abandon update and return to user detail)
 </form>

@@ -9,6 +9,10 @@ body {
     padding: 5px;
     margin: 5px 5px 5px 0;
   }
+  input {
+    font-size: 100%;
+    color: #484848;
+  }
 a:link, a:visited {
     color: #484848;
     text-decoration: none;
