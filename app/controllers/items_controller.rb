@@ -24,11 +24,26 @@ class ItemsController < ApplicationController
     end
 
     get '/items/:id/edit' do
-        "erb :/items/edit, item # #{params[:id]}"
+        # protect me
+        @item = Item.find_by_id(params[:id])
+        erb :"/items/edit"
     end
 
     patch '/items/:id' do
-        "processes update to item # #{params[:id]}"
+        if logged_in? # see users patch path for comment
+            @item = Item.find_by_id(params[:id])
+            if @user.id == current_user.id
+                if @item.update(params.except(:_method))
+                    redirect "/items/#{params[:id]}" #displays successful update(s) on show page
+                else
+                    redirect "/items/#{params[:id]}/edit" #reloads edit if unable to update
+                end
+            else
+                redirect "/items/#{params[:id]}"
+            end
+        else
+            redirect "/login"
+        end
     end
 
 
