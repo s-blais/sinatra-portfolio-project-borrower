@@ -1,0 +1,7 @@
+<h2>All Items</h2>
+
+<% Item.all.each do |i| %>
+  <p>
+    <a href="/items/<%= i.id %>"><%= i.title %></a>
+  </p>
+<% end %>

@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     end
 
     get '/items' do
-        "erb :/items/index"
+        erb :"/items/index"
     end
 
     get '/items/:id' do
