@@ -7,11 +7,11 @@
   <body>
     <h1>Borrower</h1>
     <%= yield %>
-    <footer>
-      <% if logged_in? %>
-        <br><br>
-        <a class="button" href="/logout">log out <%= current_user.username %></a>
-      <% end %>
-    </footer>
+    <% if logged_in? %>
+      <footer>
+          <br><br>
+          <a class="button" href="/logout">log out <%= current_user.username %></a>
+      </footer>
+    <% end %>
   </body>
 </html>
