@@ -9,19 +9,11 @@ body {
     padding: 5px;
     margin: 5px 5px 5px 0;
   }
-a:link {
+a:link, a:visited {
     color: #484848;
     text-decoration: none;
   }
-a:visited {
-    color: #484848;
-    text-decoration: none;
-  }
-a:hover {
-    color: #484848;
-    text-decoration: underline;
-  }
-a:active {
+a:hover, a:active, a:focus {
     color: #484848;
     text-decoration: underline;
   }
@@ -31,4 +23,10 @@ h1 {
 h4 {
     margin-bottom: 0;
   }
-hr {padding: 5px, 0, 5px, 0;}
+hr {
+  padding: 5px, 0, 5px, 0;
+  }
+footer, footer a, footer.button {
+  color: #ff6600 !important; /* yeah I know I'm rusty */
+  font-size: small;
+}
