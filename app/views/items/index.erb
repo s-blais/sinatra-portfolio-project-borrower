@@ -1,7 +1,8 @@
 <h2>All Items</h2>
+<p>Items with orange dot are currently available</p>
 
 <% Item.all.each do |i| %>
-  <p>
+  <p><span<%= ' style="color: #f60"' if i.user_id == i.borrower_id %>> •</span>
     <a href="/items/<%= i.id %>"><%= i.title %></a>
   </p>
 <% end %>
