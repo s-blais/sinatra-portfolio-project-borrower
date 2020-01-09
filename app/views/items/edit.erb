@@ -12,14 +12,18 @@
   <label for="max_borrow_days">maximum borrowable days</label><br>
   <input type="text" name="max_borrow_days" id="max_borrow_days" value="<%= @item.max_borrow_days %>">
   <br><br>
-  <label for="borrower_id">current borrower id (self if not borrowed)</label><br>
-  <input type="text" id="borrower_id" name="borrower_id" value="<%= @item.borrower_id %>">
+  <label for="borrower_id">current borrower (self if not borrowed)</label><br>
+  <select name="borrower_id" id="borrower_id">
+    <% User.all.each do |u| %>
+      <option value="<%= u.id %>" <%= 'selected' if @item.borrower_id == current_user.id %>><%= u.username %><%= ' (self)' if u.id == current_user.id %></option>
+    <% end %>
+  </select>
   <br><br>
-  <input type="submit" class="button" value="update <%= @item.title %>">
+  <input type="submit" class="button" value="update <%= @item.title %>"> (save any changes made above)
 </form>
 <form method="post" action="/items/<%= @item.id %>" style="display: inline;">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete <%= @item.title %>" class="button" id="Delete Item"> (remove <%= @item.title %> from the Borrower community)
 </form>
-<br>
-<a class="button" href="/items/<%= @item.id %>"">eh, never mind</a> (leave <%= @item.title %> as is)
+<br><br>
+<a class="button" href="/items/<%= @item.id %>"">eh, never mind</a> (leave as is, return to <%= @item.title %> detail page)
