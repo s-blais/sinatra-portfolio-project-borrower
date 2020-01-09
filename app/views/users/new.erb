@@ -1,3 +1,10 @@
+<% if flash.has?(:message) %>
+  <div class="flashmessage">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <%= flash[:message] %>
+  </div>
+<% end %>
+
 <h2>Join the Borrower Community!</h2>
 <h2>Create Borrower User:</h2>
 

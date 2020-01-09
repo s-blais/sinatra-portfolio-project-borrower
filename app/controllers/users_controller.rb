@@ -13,14 +13,18 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        # add username uniqueness test
-        # add password != "" test since requiring it in user.rb prevents any updates
-        user = User.new(params)
-        if user.save
-            session[:user_id] = user.id
-            redirect "/users/#{current_user.id}"
+        if User.all.collect{|u| u.username}.include?(params[:username])
+            flash[:message] = "Sorry, username #{params[:username]} is already in use, try again"
+            redirect "/users/new"
         else
-            redirect '/'
+            # add password != "" test since requiring it in user.rb prevents any updates
+            user = User.new(params)
+            if user.save
+                session[:user_id] = user.id
+                redirect "/users/#{current_user.id}"
+            else
+                redirect '/'
+            end
         end
     end
 
