@@ -10,4 +10,5 @@
   <% Item.all.select{|i| i.user_id == current_user.id}.each do |i| %>
     <p><span<%= ' style="color: #f60"' if i.user_id == i.borrower_id %>> • </span><a href="/items/<%= i.id %>"><%= i.title %></a></p>
     <% end %>
+<a class = "button" href="/items/new">add item</a>
 <% end %>
