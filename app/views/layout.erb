@@ -10,7 +10,7 @@
     <% if logged_in? %>
       <footer>
           <br><br>
-          <a class="button" href="/items">all items</a>
+          <a class="button" href="/items">all Borrower items</a>
           <a class="button" href="/users/<%= current_user.id %>">my info & my items</a>
           <br>
           <a class="button" href="/logout">log out <%= current_user.username %></a>

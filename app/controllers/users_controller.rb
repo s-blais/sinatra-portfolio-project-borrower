@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     get '/users/new' do
         if logged_in?
-            flash[:message] = "You must log out before you can create a new Borrower user! Use the log out button, below in the footer."
+            flash[:message] = "You must log out before you can create a new Borrower user!<br>Use the log out button, below in the footer."
             redirect "/users/#{current_user.id}"
         else
             erb :"/users/new"
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
             user = User.new(params)
             if user.save
                 session[:user_id] = user.id
+                flash[:message] = "Welcome to Borrower!<br>Add more profile info by clicking the 'edit #{current_user.username}' button below.<br>Add items that you'd like to make available to the Borrower community by clicking the 'add item' button."
                 redirect "/users/#{current_user.id}"
             else
                 redirect '/'
