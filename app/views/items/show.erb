@@ -23,5 +23,5 @@
 <% end %>
 
 <% if @item.user_id == current_user.id %>
-  <a class = "button" href="/items/<%= @item.id %>/edit">edit <%= @item.title %></a><br>
+  <a class = "button" href="/items/<%= @item.id %>/edit">edit or delete <%= @item.title %></a><br>
 <% end %>

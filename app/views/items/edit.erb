@@ -15,7 +15,11 @@
   <label for="borrower_id">current borrower id (self if not borrowed)</label><br>
   <input type="text" id="borrower_id" name="borrower_id" value="<%= @item.borrower_id %>">
   <br><br>
-  <input type="submit" class="button" value="update item">
-  <br><br>
-  <a class="button" href="/items/<%= @item.id %>"">eh, never mind</a> (abandon update and return to item detail)
+  <input type="submit" class="button" value="update <%= @item.title %>">
 </form>
+<form method="post" action="/items/<%= @item.id %>" style="display: inline;">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete <%= @item.title %>" class="button" id="Delete Item"> (remove <%= @item.title %> from the Borrower community)
+</form>
+<br>
+<a class="button" href="/items/<%= @item.id %>"">eh, never mind</a> (leave <%= @item.title %> as is)
