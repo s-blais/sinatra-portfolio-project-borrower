@@ -1,8 +1,11 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+    use Rack::Flash
 
     get '/users/new' do
         if logged_in?
-            # "you must be logged out to create a new user etc" message might be good here
+            flash[:message] = "You must log out before you can create a new Borrower user! Use the log out button, below in the footer."
             redirect "/users/#{current_user.id}"
         else
             erb :"/users/new"
@@ -23,7 +26,7 @@ class UsersController < ApplicationController
 
     get '/login' do
         if logged_in?
-            # "you are already logged in as... to login as different..." might be good here
+            flash[:message] = "You are already logged in as #{current_user.username}.<br>To log in as a different user, first log out using the button below, in the footer."
             redirect "/users/#{current_user.id}"
         else
             erb :"/users/login"

@@ -1,3 +1,10 @@
+<% if flash.has?(:message) %>
+  <div class="flashmessage">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <%= flash[:message] %>
+  </div>
+<% end %>
+
 <h2>Username: <%= @user.username %><% if @user.id == current_user.id %> (you)<% end %></h2>
 <p>Email: <%= @user.email %></p>
 <p>Phone: <%= @user.phone %></p>
