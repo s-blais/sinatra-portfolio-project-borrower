@@ -10,7 +10,7 @@ body {
     margin: 5px 5px 5px 0;
     display: inline-block;
   }
-  input {
+  input, select {
     font-size: 100%;
     color: #484848;
   }
@@ -22,8 +22,12 @@ a:hover, a:active, a:focus {
     color: #484848;
     text-decoration: underline;
   }
+input.button:hover, input.button:active, input.button:focus {
+  text-decoration: underline;
+}
 h1 {
     color: #ff6600;
+    margin-bottom: 1.5em;
   }
 h4 {
     margin-bottom: 0;
