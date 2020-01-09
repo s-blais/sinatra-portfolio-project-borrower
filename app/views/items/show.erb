@@ -9,7 +9,7 @@
 <% end %>
 
 <% if @item.user_id == current_user.id && @item.user_id != @item.borrower_id %>
-  <p>Your <%= @item.title %> is currently borrowed by <%= @borrower.username %>.</p>
+  <p>Your <%= @item.title %> is currently borrowed by <a href="/users/<%= @borrower.id %>"><%= @borrower.username %></a>.</p>
 <% end %>
 
 <% if @item.user_id != current_user.id && @item.user_id == @item.borrower_id %>
