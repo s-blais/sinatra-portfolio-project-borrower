@@ -13,9 +13,13 @@
 <% if @user.id == current_user.id %>
   <a class = "button" href="/users/<%= @user.id %>/edit">edit <%= @user.username %></a><br><br>
   <h3>My items:</h3>
-  <p>Items with orange dot are currently available (in your possession)</p>
-  <% Item.all.select{|i| i.user_id == current_user.id}.each do |i| %>
-    <p><span<%= ' style="color: #f60"' if i.user_id == i.borrower_id %>> • </span><a href="/items/<%= i.id %>"><%= i.title %></a></p>
+  <% if current_user.items.empty? %>
+    <p>No items yet.</p>
+  <% else %>
+    <p>Items with orange dot are currently available (in your possession)</p>
+    <% Item.all.select{|i| i.user_id == current_user.id}.each do |i| %>
+      <p><span<%= ' style="color: #f60"' if i.user_id == i.borrower_id %>> • </span><a href="/items/<%= i.id %>"><%= i.title %></a></p>
     <% end %>
+  <% end %>
 <a class = "button" href="/items/new">add item</a>
 <% end %>
