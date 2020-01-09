@@ -48,12 +48,12 @@ class ItemsController < ApplicationController
 
     delete '/items/:id' do
         if logged_in?
-            @item = Item.find_by_id(params[:id])
-            if @item.user_id == current_user.id
-                @item.destroy
+            item = Item.find_by_id(params[:id])
+            if item.user_id == current_user.id
+                item.destroy
                 redirect "/users/#{current_user.id}"
             else
-                redirect "/items/#{@item.id}"
+                redirect "/items/#{item.id}"
             end
         else
             redirect "/login"
