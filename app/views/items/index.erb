@@ -1,8 +1,9 @@
-<h2>All Items</h2>
-<p>Items with orange dot are currently available</p>
+<h2>All Borrower Items</h2>
+<p>Items with orange dot are currently available for borrowing.<br>
+Items that belong to you are indicated as such.</p>
 
 <% Item.all.each do |i| %>
   <p><span<%= ' style="color: #f60"' if i.user_id == i.borrower_id %>> •</span>
-    <a href="/items/<%= i.id %>"><%= i.title %></a>
+    <a href="/items/<%= i.id %>"><%= i.title %></a><span style="font-size: small;"><%= ' – my item' if i.user_id == current_user.id %></span>
   </p>
 <% end %>
