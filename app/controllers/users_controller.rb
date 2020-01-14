@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             flash[:message] = "Sorry, username #{params[:username]} is already in use, try again"
             redirect "/users/new"
         else
-            # add password != "" test since requiring it in user.rb prevents any updates
+            # add password != "" test since requiring it in user.rb prevents any updates?
             user = User.new(params)
             if user.save
                 session[:user_id] = user.id
@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
+        # add login confirmation rack-flash?
         user = User.find_by(:username => params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
     end
 
     get '/logout' do
+        # add logout confirmation rack-flash?
         if logged_in?
             session.clear
         end
@@ -86,6 +88,7 @@ class UsersController < ApplicationController
     end
 
     patch '/users/:id' do
+        # add update confirmation rack-flash?
         if logged_in? #is this even necessary? Is this test needed for anything post or patch? The subsequent "if" statement seems like it would bounce a non-logged-in patch attempt to the login page, because the else/redirect would fail that path's logged_in test, right?
             @user = User.find_by_id(params[:id])
             if @user.id == current_user.id
