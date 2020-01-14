@@ -3,6 +3,13 @@ body {
     color: #484848;
     line-height: 1.3em;
   }
+h1 {
+    color: #ff6600;
+    margin-bottom: 1.5em;
+  }
+h4 {
+    margin-bottom: 0;
+  }
 .button {
     border: 1px solid;
     border-radius: 5px;
@@ -10,7 +17,7 @@ body {
     margin: 5px 5px 5px 0;
     display: inline-block;
   }
-  input, select {
+input, select {
     font-size: 100%;
     color: #484848;
   }
@@ -25,13 +32,9 @@ a:hover, a:active, a:focus {
 input.button:hover, input.button:active, input.button:focus {
   text-decoration: underline;
 }
-h1 {
-    color: #ff6600;
-    margin-bottom: 1.5em;
-  }
-h4 {
-    margin-bottom: 0;
-  }
+h1 a:link, h1 a:visited, h1 a:hover, h1 a:active, h1 a:focus {
+  color: #f60;
+}
 hr {
   padding: 5px, 0, 5px, 0;
   }
