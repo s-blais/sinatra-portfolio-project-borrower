@@ -15,7 +15,7 @@
   <label for="borrower_id">current borrower (self if not borrowed)</label><br>
   <select name="borrower_id" id="borrower_id">
     <% User.all.each do |u| %>
-      <option value="<%= u.id %>" <%= 'selected' if @item.borrower_id == current_user.id %>><%= u.username %><%= ' (self)' if u.id == current_user.id %></option>
+      <option value="<%= u.id %>" <%= 'selected' if @item.borrower_id == u.id %>><%= u.username %><%= ' (self)' if u.id == current_user.id %></option>
     <% end %>
   </select>
   <br><br>
